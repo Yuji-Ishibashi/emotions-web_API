@@ -31,9 +31,8 @@ var vm = new Vue({
 				fetch(url + "/user/login", {
 					method: "POST",
 					body: JSON.stringify({
-						key1: "value1",
-						key2: "value2",
-						key3: "value3"
+						"userId" : vm.user.userId,
+						"password" : vm.user.password
 					  })
 					})
 					.then(function(response) {
@@ -47,8 +46,9 @@ var vm = new Vue({
 					})
 					.then(function(json){
 						// レスポンスが200で帰ってきたときの処理はここに記載する
-						var content = JSON.stringify(json, null, 2);
-						console.log(content);
+						localStorage.setItem('token', json.token);
+						localStorage.setItem('userId', vm.user.userId);
+						location.href = "./index.html"
 					})
 					.catch(function(err){
 						// レスポンスがエラーで返ってきたときの処理はここで記載する

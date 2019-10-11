@@ -4,7 +4,13 @@ var vm = new Vue({
 		// Vue.jsで使う変数はここに記載する
 		mode: "login",
 		submitText: "ログイン",
-		toggleText: "新規登録"
+		toggleText: "新規登録",
+		user: {
+			userId: null,
+			password: null,
+			nickname: null,
+			age: null
+		}
 	},
 	methods: {
 		// Vue.jsで使う関数はここで記述する
@@ -21,9 +27,8 @@ var vm = new Vue({
 		},
 		submit: function(){
 			if (vm.mode == "login"){
-				// ログイン処理
-				// APIにPOSTリクエストを送る
-				fetch(url + "/test/echo", {
+				// ログイン処理APIにPOSTリクエストを送る
+				fetch(url + "/user/login", {
 					method: "POST",
 					body: JSON.stringify({
 						key1: "value1",
@@ -50,8 +55,34 @@ var vm = new Vue({
 					})
 
 			} else if (vm.mode == "signup") {
-				// 新規登録処理
-				console.log("signup")
+				// 新規登録処理APIにPOSTリクエストを送る
+				fetch(url + "/user/signup", {
+					method: "POST",
+					body: JSON.stringify({
+						"userId" : vm.user.userId,
+						"password" : vm.user.password,
+						"nickname" : vm.user.nickname,
+						"age" : Number(vm.user.age)
+					  })
+					})
+					.then(function(response) {
+						if (response.status == 200) {
+							return response.json();
+						}
+						// 200番以外のレスポンスはエラーを投げる
+						return response.json().then(function(json) {
+							throw new Error(json.message);
+						});
+					})
+					.then(function(json){
+						// レスポンスが200で帰ってきたときの処理はここに記載する
+						var content = JSON.stringify(json, null, 2);
+						console.log(content);
+					})
+					.catch(function(err){
+						// レスポンスがエラーで返ってきたときの処理はここで記載する
+					})
+
 			}
 		}
 	},

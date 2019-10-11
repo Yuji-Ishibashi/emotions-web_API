@@ -25,25 +25,25 @@
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="user icon"></i>
-								<input type="text" placeholder="ID">
+								<input type="text" placeholder="ID" v-model="user.userId">
 							</div>
 						</div>
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="lock icon"></i>
-								<input type="text" placeholder="Password">
+								<input type="text" placeholder="Password" v-model="user.password">
 							</div>
 						</div>
 						<div class="field" v-if="mode=='signup'">
 							<div class="ui left icon input">
 								<i class="tag icon"></i>
-								<input type="text" placeholder="Nickname">
+								<input type="text" placeholder="Nickname" v-model="user.nickname">
 							</div>
 						</div>
 						<div class="field" v-if="mode=='signup'">
 							<div class="ui left icon input">
 								<i class="calendar icon"></i>
-								<input type="text" placeholder="Age">
+								<input type="text" placeholder="Age" v-model="user.age">
 							</div>
 						</div>
 						<button class="ui huge green fluid button" type="submit">

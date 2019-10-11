@@ -1,17 +1,1 @@
-var vm = new Vue({
-	el: "", //Vue.jsを使うタグのIDを指定
-	data: {
-		// Vue.jsで使う変数はここに記載する
-		mode: ""
-	},
-	methods: {
-		// Vue.jsで使う関数はここで記述する
-	},
-	created: function(){
-		// Vue.jsの読み込みが完了したときに実行する処理はここで記載する
-	},
-	computed: {
-		// 計算した結果を変数として利用したいときはここに記載する
-
-	}
-})
+var url = "https://hlt2fks2v9.execute-api.ap-northeast-1.amazonaws.com/v1"

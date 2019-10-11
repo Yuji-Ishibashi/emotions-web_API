@@ -22,6 +22,33 @@ var vm = new Vue({
 		submit: function(){
 			if (vm.mode == "login"){
 				// ログイン処理
+				// APIにPOSTリクエストを送る
+				fetch(url + "/test/echo", {
+					method: "POST",
+					body: JSON.stringify({
+						key1: "value1",
+						key2: "value2",
+						key3: "value3"
+					  })
+					})
+					.then(function(response) {
+						if (response.status == 200) {
+							return response.json();
+						}
+						// 200番以外のレスポンスはエラーを投げる
+						return response.json().then(function(json) {
+							throw new Error(json.message);
+					  });
+					})
+					.then(function(json){
+						// レスポンスが200で帰ってきたときの処理はここに記載する
+						var content = JSON.stringify(json, null, 2);
+						console.log(content);
+					})
+					.catch(function(err){
+						// レスポンスがエラーで返ってきたときの処理はここで記載する
+					})
+
 			} else if (vm.mode == "signup") {
 				// 新規登録処理
 				console.log("signup")

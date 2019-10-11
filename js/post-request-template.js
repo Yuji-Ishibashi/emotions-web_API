@@ -1,5 +1,5 @@
-// APIにGETリクエストを送る
-fetch(url + "/test/exho", {
+// APIにPOSTリクエストを送る
+fetch(url + "/test/echo", {
 	method: "POST",
 	body: JSON.stringify({
 		key1: "value1",

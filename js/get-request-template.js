@@ -1,5 +1,5 @@
 // APIにGETリクエストを送る
-fetch(url + "/test/exho" + "?key1=value1&key2=value2&key3=value3", {
+fetch(url + "/test/echo" + "?key1=value1&key2=value2&key3=value3", {
 	method: "GET"
 	})
 	.then(function(response) {

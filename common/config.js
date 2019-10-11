@@ -1,5 +1,5 @@
 var vm = new Vue({
-	el: "#", //Vue.jsを使うタグのIDを指定
+	el: "", //Vue.jsを使うタグのIDを指定
 	data: {
 		// Vue.jsで使う変数はここに記載する
 		mode: ""

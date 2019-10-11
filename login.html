@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<title>template</title>
+	<title>login</title>
 
 	<!-- Site Properties -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
@@ -21,7 +21,7 @@
 			<!-- 基本的なコンテンツはここに記載する -->
 			<div class="ui segment">
 				<!-- ここにセグメントの中身を記載する -->
-				<form class="ui large form">
+				<form class="ui large form" v-on:submit.prevent="submit">
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="user icon"></i>
@@ -34,25 +34,25 @@
 								<input type="text" placeholder="Password">
 							</div>
 						</div>
-						<div class="field">
+						<div class="field" v-if="mode=='signup'">
 							<div class="ui left icon input">
 								<i class="tag icon"></i>
 								<input type="text" placeholder="Nickname">
 							</div>
 						</div>
-						<div class="field">
+						<div class="field" v-if="mode=='signup'">
 							<div class="ui left icon input">
 								<i class="calendar icon"></i>
 								<input type="text" placeholder="Age">
 							</div>
 						</div>
 						<button class="ui huge green fluid button" type="submit">
-							新規登録
+							{{ submitText }}
 						</button>
 				</form>
 			</div>
-			<button class="ui large grey fluid button">
-				ログイン
+			<button class="ui large grey fluid button" v-on:click="toggleMode">
+				{{ toggleText }}
 			</button>
 		</div>
 	</div>

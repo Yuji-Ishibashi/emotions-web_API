@@ -92,6 +92,9 @@ var vm = new Vue({
 				// レスポンスが200で帰ってきたときの処理はここに記載する
 				var content = JSON.stringify(json, null, 2);
 				console.log(json);
+				vm.user.userId = json.userId
+				vm.user.nickname = json.nickname
+				vm.user.age = json.age
 			})
 			.catch(function(err){
 				// レスポンスがエラーで返ってきたときの処理はここで記載する

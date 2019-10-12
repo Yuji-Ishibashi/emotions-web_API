@@ -2,7 +2,12 @@ var vm = new Vue({
 	el: "#app", //Vue.jsを使うタグのIDを指定
 	data: {
 		// Vue.jsで使う変数はここに記載する
-		users: []
+		users: [],
+		query: {
+			nickname: null,
+			start: null,
+			end: null
+		}
 	},
 	methods: {
 		// Vue.jsで使う関数はここで記述する
@@ -91,6 +96,24 @@ var vm = new Vue({
 	},
 	computed: {
 		// 計算した結果を変数として利用したいときはここに記載する
-
+		filteredUsers: function() {
+			var result = this.users;
+			if (this.query.nickname) {
+				result = result.filter(function (target) {
+					return target.nickname.match(vm.query.nickname);
+				});
+			}
+			if (this.query.start) {
+				result = result.filter(function (target) {
+					return target.age >= vm.query.start;
+				});
+			}
+			if (this.query.end) {
+				result = result.filter(function (target) {
+					return target.age <= vm.query.end;
+				});
+			}
+			return result;
+		}
 	}
 })

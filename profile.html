@@ -17,15 +17,16 @@
 <body>
 	<!-- Vue.jsで読み込む -->
 	<div id="app">
+		<!-- メニューバー -->
+		<common-menu current="profile"></common-menu>
+		<!-- コンテンツ -->
 		<div class="ui main container">
-			<!-- 基本的なコンテンツはここに記載する -->
 			<div class="ui segment">
-				<!-- ここにセグメントの中身を記載する -->
 				<form class="ui large form" v-on:submit.prevent="submit">
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="user icon"></i>
-								<input type="text" placeholder="ID" v-model="user.userId" required readonly>
+								<input type="text" placeholder="{{user.userId}}" v-model="user.userId" required readonly>
 							</div>
 						</div>
 						<div class="field">
@@ -37,13 +38,13 @@
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="tag icon"></i>
-								<input type="text" placeholder="Nickname" v-model="user.nickname">
+								<input type="text" placeholder="{{user.nickname}}" v-model="user.nickname">
 							</div>
 						</div>
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="calendar icon"></i>
-								<input type="text" placeholder="Age" v-model="user.age">
+								<input type="text" placeholder="{{user.age}}" v-model="user.age">
 							</div>
 						</div>
 						<button class="ui huge green fluid button" type="submit">
@@ -59,6 +60,8 @@
 
 	<!-- APIのURLを読み込みJSファイル -->
 	<script src="./common/config.js" charset="utf-8"></script>
+	<!-- メニューのjsファイル -->
+	<script src="./js/menu.js" charset="utf-8"></script>
 	<!-- 各ページで使うJSファイルはこの行より下で読み込む -->
 	<script src="./js/profile.js" charset="utf-8"></script>
 </body>

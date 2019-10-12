@@ -15,28 +15,52 @@
 	<link rel="stylesheet" type="text/css" href="common/style.css">
 </head>
 <body>
-<div id="app">
-	<div class="ui main container">
-		<div class="ui segments">
-			<div class="ui segment" v-for="user in users">
-				<h2 class="ui header">
-					<div class="content">
-						{{ user.nickname }}<div class="ui green label">{{ user.age }}</div>
-					</div>
-					<dir class="sub header">
-						{{ user.userId }}
-					</dir>
-				</h2>
-			</div>
-			<div class="ui segment">
-				
+
+	<div id="app">
+		<!-- メニューバー -->
+		<common-menu current="users"></common-menu>
+		<!-- コンテンツ -->
+		<div class="ui main container">
+			<div class="ui segments">
+				<div class="ui segment" v-for="user in filteredUsers">
+					<h2 class="ui header">
+						<div class="content">
+							{{ user.nickname }}<div class="ui green label">{{ user.age }}</div>
+						</div>
+						<dir class="sub header">
+							{{ user.userId }}
+						</dir>
+					</h2>
+				</div>
+				<div class="ui segment">
+					<form class="ui form">
+						<div class="field">
+							<label>ユーザー名</label>
+							<input type="text" placeholder="Nickname" v-model="query.nickname">
+						</div>
+						<div class="field">
+							<label>年齢</label>
+							<div class="inline fields">
+								<div class="field">
+									<input type="text" v-model="query.start">
+									<label>際から</label>
+								</div>
+								<div class="field">
+									<input type="text" v-model="query.end">
+									<label>際まで</label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 	<!-- APIのURLを読み込みJSファイル -->
 	<script src="./common/config.js" charset="utf-8"></script>
-	<!-- 各ページで使うJSファイルはこの行より下で読み込む -->
+	<!-- メニューのjsファイル -->
+	<script src="./js/menu.js" charset="utf-8"></script>
+	<!-- 各ページで使うJSファイルはこの行より下 -->
 	<script src="./js/user.js" charset="utf-8"></script>
 </body>
 </html>

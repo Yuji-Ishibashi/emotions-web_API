@@ -75,6 +75,27 @@ var vm = new Vue({
 	},
 	created: function(){
 		// Vue.jsの読み込みが完了したときに実行する処理はここで記載する
+		// ユーザー情報取得APIにGETリクエストを送る
+		fetch(url + "/user" + "?userId=" + localStorage.getItem('userId'), {
+			method: "GET"
+			})
+			.then(function(response) {
+				if (response.status == 200) {
+					return response.json();
+				}
+				// 200番以外のレスポンスはエラーを投げる
+				return response.json().then(function(json) {
+					throw new Error(json.message);
+				});
+			})
+			.then(function(json){
+				// レスポンスが200で帰ってきたときの処理はここに記載する
+				var content = JSON.stringify(json, null, 2);
+				console.log(json);
+			})
+			.catch(function(err){
+				// レスポンスがエラーで返ってきたときの処理はここで記載する
+			})
 	},
 	computed: {
 		// 計算した結果を変数として利用したいときはここに記載する

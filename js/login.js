@@ -48,7 +48,7 @@ var vm = new Vue({
 						// レスポンスが200で帰ってきたときの処理はここに記載する
 						localStorage.setItem('token', json.token);
 						localStorage.setItem('userId', vm.user.userId);
-						location.href = "./index.html"
+						location.href = "./profile.html"
 					})
 					.catch(function(err){
 						// レスポンスがエラーで返ってきたときの処理はここで記載する

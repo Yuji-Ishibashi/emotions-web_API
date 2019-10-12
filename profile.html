@@ -34,25 +34,25 @@
 								<input type="text" placeholder="Password" v-model="user.password">
 							</div>
 						</div>
-						<div class="field" v-if="mode=='signup'">
+						<div class="field">
 							<div class="ui left icon input">
 								<i class="tag icon"></i>
 								<input type="text" placeholder="Nickname" v-model="user.nickname">
 							</div>
 						</div>
-						<div class="field" v-if="mode=='signup'">
+						<div class="field">
 							<div class="ui left icon input">
 								<i class="calendar icon"></i>
 								<input type="text" placeholder="Age" v-model="user.age">
 							</div>
 						</div>
 						<button class="ui huge green fluid button" type="submit">
-							{{ submitText }}
+							プロフィールを編集
 						</button>
 				</form>
 			</div>
-			<button class="ui large grey fluid button" v-on:click="toggleMode">
-				{{ toggleText }}
+			<button class="ui large grey fluid button" v-on:click="deleteUser">
+				退会
 			</button>
 		</div>
 	</div>

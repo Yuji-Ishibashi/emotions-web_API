@@ -95,6 +95,7 @@ var vm = new Vue({
 				vm.user.userId = json.userId
 				vm.user.nickname = json.nickname
 				vm.user.age = json.age
+				vm.user.password = json.password
 			})
 			.catch(function(err){
 				// レスポンスがエラーで返ってきたときの処理はここで記載する

@@ -74,7 +74,7 @@ var vm = new Vue({
 	},
 	created: function(){
 		// Vue.jsの読み込みが完了したときに実行する処理はここで記載する
-				// ユーザー情報取得APIにGETリクエストを送る
+		// ユーザー情報取得APIにGETリクエストを送る
 		fetch(url + "/users", {method: "GET"})
 			.then(function(response) {
 				if (response.status == 200) {

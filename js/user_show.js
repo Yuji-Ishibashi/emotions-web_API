@@ -81,7 +81,8 @@ var vm = new Vue({
 	created: function(){
 		// Vue.jsの読み込みが完了したときに実行する処理はここで記載する
 		// ユーザー情報取得APIにGETリクエストを送る
-		fetch(url + "/user" + "?userId=" + localStorage.getItem('userId'), {
+		var thisuser = location.search.substring(1).split( '=' )[1];
+		fetch(url + "/user" + "?userId=" + thisuser, {
 			method: "GET"
 		})
 		.then(function(response) {
@@ -105,7 +106,7 @@ var vm = new Vue({
 		.catch(function(err){
 			// レスポンスがエラーで返ってきたときの処理はここで記載する
 		})
-		// 結果取得APIにGETリクエストを送る
+		// 投稿結果取得APIにGETリクエストを送る
 		fetch(url + "/user/results", {method: "GET"})
 		.then(function(response) {
 			if (response.status == 200) {

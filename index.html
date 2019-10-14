@@ -24,6 +24,7 @@
 		<!-- コンテンツ -->
 		<div class="ui main container">
 			<div class="ui segment">
+				<h2>①画像をアップロード</h2>
 				<input type="file" name="upload" id="upload-file" class="ui huge green fluid button" accept="image/*">
 				<img id="preview" style="width:100%;">
 			    <button id="apply-upload" class="ui huge green fluid button">
@@ -31,17 +32,21 @@
 				</button>
 			</div>
 			<div class="ui segment">
+				<h2>②分析結果を取得</h2>
 				<!-- 分析結果のグラフを表示 -->
-				<h3 id="sad">{{ result.sad }}</h3>
-				<h3 id="surprised">{{ result.surprised }}</h3>
-				<h3 id="smile">{{ result.smile }}</h3>
-				<h3 id="calm">{{ result.calm }}</h3>
-				<h3 id="angry">{{ result.angry }}</h3>
+				<h3>
+					悲しみ：<span id="sad" class="ui teal label">{{ result.sad }}</span>
+					驚き：<span id="surprised" class="ui violet label">{{ result.surprised }}</span>
+					笑顔：<span id="smile" class="ui yellow label">{{ result.smile }}</span>
+					冷静さ：<span id="calm" class="ui olive label">{{ result.calm }}</span>
+					怒り：<span id="angry" class="ui red label">{{ result.angry }}</span>
+				</h3>
 				<button id="get-result" class="ui huge green fluid button" v-on:click="getresult">
 							分析結果を取得
 				</button>
 			</div>
 			<div class="ui segment">
+				<h2>③グラフを表示</h2>
 				<div><canvas id="myChart"></canvas></div>
 				<button id="show-chart" class="ui huge green fluid button">
 							グラフを表示
@@ -51,7 +56,28 @@
 	</div>
 	 <script>
 	 	$(function () {
-	 		$("#show-chart").click(function () {
+	 		// $("#show-chart").click(function () {
+		 		var sad = document.getElementById('sad').textContent;
+		 		var surprised = document.getElementById('surprised').textContent;
+		 		var smile = document.getElementById('smile').textContent;
+		 		var calm = document.getElementById('angry').textContent;
+		 		var angry = document.getElementById('calm').textContent;
+
+				var ctx = document.getElementById("myChart");
+				var myChart = new Chart(ctx, {
+				  type: 'radar',
+				  data: {
+				    labels: ["悲しみ", "驚き", "笑顔", "怒り", "冷静さ"],
+				    datasets: [{
+				      label: '感情チャート',
+				      backgroundColor: "rgba(153,255,51,0.4)",
+				      borderColor: "rgba(153,255,51,1)",
+				      data: [sad, surprised, smile, calm, angry]
+				    }]
+				  }
+				});
+			// });
+			$("#show-chart").click(function () {
 		 		var sad = document.getElementById('sad').textContent;
 		 		var surprised = document.getElementById('surprised').textContent;
 		 		var smile = document.getElementById('smile').textContent;

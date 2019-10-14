@@ -3,11 +3,11 @@ var vm = new Vue({
 	data: {
 		// Vue.jsで使う変数はここに記載する
 		result: {
-			sad: null,
-			surprised: null,
-			smile: null,
-			calm: null,
-			angry: null,
+			sad: 0,
+			surprised: 0,
+			smile: 0,
+			calm: 0,
+			angry: 0,
 		}
 	},
 	methods: {

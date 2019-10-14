@@ -22,6 +22,7 @@
 		<!-- コンテンツ -->
 		<div class="ui main container">
 			<div class="ui segment">
+				<h2>ユーザーを検索</h2>
 				<form class="ui form">
 					<div class="field">
 						<label>ユーザー名</label>
@@ -42,20 +43,31 @@
 					</div>
 				</form>
 			</div>
-			<div class="ui segments">
-				<div class="ui segment" v-for="user in filteredUsers">
-					<h2 class="ui header">
-						<div class="content">
-							{{ user.nickname }}<div class="ui green label">{{ user.age }}</div>
-						</div>
-						<dir class="sub header">
-							{{ user.userId }}
-						</dir>
-					</h2>
+			<div class="ui segment">
+				<h2>ユーザー一覧</h2>
+				<div class="ui segments">
+					<div class="ui segment" v-for="user in filteredUsers" :key="user">
+						<h2 class="ui header">
+							<div class="content">
+								{{ user.nickname }}<div class="ui green label">{{ user.age }}</div>
+							</div>
+							<dir class="sub header">
+								{{ user.userId }}
+							</dir>
+						</h2>
+						<a :href="'user_show.html' +'?' + 'userId=' + user.userId">詳細</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<!-- 	<script>
+	 	$(function () {
+			$("#show").click(function () {
+		 		var sad = document.getElementById('sad').textContent;
+			});
+		});
+    </script> -->
 	<!-- APIのURLを読み込みJSファイル -->
 	<script src="./common/config.js" charset="utf-8"></script>
 	<!-- メニューのjsファイル -->

@@ -49,9 +49,11 @@ var vm = new Vue({
 						localStorage.setItem('token', json.token);
 						localStorage.setItem('userId', vm.user.userId);
 						location.href = "./index.html"
+						alert('ログインに成功しました!!')
 					})
 					.catch(function(err){
 						// レスポンスがエラーで返ってきたときの処理はここで記載する
+						alert('ユーザー名もしくはパスワードが違います。')
 					})
 
 			} else if (vm.mode == "signup") {
@@ -84,6 +86,7 @@ var vm = new Vue({
 					})
 					.catch(function(err){
 						// レスポンスがエラーで返ってきたときの処理はここで記載する
+						alert('全ての欄を埋めてください。')
 					})
 
 			}

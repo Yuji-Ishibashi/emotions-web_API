@@ -21,6 +21,7 @@ Vue.component("common-menu", {
 				localStorage.removeItem('token');
 				localStorage.removeItem('userId');
 				location.href = "./login.html"
+				alert('ログアウトしました。')
 			}
 		}
 });

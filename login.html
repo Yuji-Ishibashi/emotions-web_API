@@ -20,6 +20,7 @@
 		<div class="ui main container">
 			<!-- コンテンツ -->
 			<div class="ui segment">
+				<h2>{{ submitText }}</h2>
 				<!-- ここにセグメントの中身を記載する -->
 				<form class="ui large form" v-on:submit.prevent="submit">
 						<div class="field">
@@ -31,7 +32,7 @@
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="lock icon"></i>
-								<input type="text" placeholder="Password" v-model="user.password">
+								<input type="password" placeholder="Password" v-model="user.password">
 							</div>
 						</div>
 						<div class="field" v-if="mode=='signup'">
